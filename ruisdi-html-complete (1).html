@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Ruisdi Official - Link in Bio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #581c87 50%, #1e293b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-effect {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .bg-effect-1 {
+            width: 400px;
+            height: 400px;
+            background: #a855f7;
+            top: 10%;
+            left: 10%;
+        }
+
+        .bg-effect-2 {
+            width: 400px;
+            height: 400px;
+            background: #ec4899;
+            top: 0;
+            right: 0;
+            animation-delay: 1s;
+        }
+
+        .bg-effect-3 {
+            width: 400px;
+            height: 400px;
+            background: #3b82f6;
+            bottom: 0;
+            left: 0;
+            animation-delay: 2s;
+        }
+
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-20px) translateX(10px); }
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) skewX(-12deg); }
+            100% { transform: translateX(200%) skewX(-12deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 30px;
+        }
+
+        .avatar-glow {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #c084fc, #ec4899, #ef4444);
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.75;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .avatar {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #ef4444 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .avatar-letter {
+            font-size: 80px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Title Styles */
+        .title-main {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #4ade80, #3b82f6, #a855f7);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-sub {
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(to right, #facc15, #f97316, #ef4444);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+            margin-bottom: 20px;
+        }
+
+        /* Badge Styles */
+        .badge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .main-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        .main-badge span {
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .sparkle {
+            width: 16px;
+            height: 16px;
+            color: #fbbf24;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .badges-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+        }
+
+        .badge-gamer {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-gamer:hover {
+            background: rgba(239, 68, 68, 0.4);
+            transform: scale(1.1);
+        }
+
+        .badge-streamer {
+            background: rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .badge-streamer:hover {
+            background: rgba(168, 85, 247, 0.4);
+            transform: scale(1.1);
+        }
+
+        .badge-influencer {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .badge-influencer:hover {
+            background: rgba(59, 130, 246, 0.4);
+            transform: scale(1.1);
+        }
+
+        /* Links Section */
+        .links-section {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        .link-button:nth-child(1) { animation-delay: 0s; }
+        .link-button:nth-child(2) { animation-delay: 0.1s; }
+        .link-button:nth-child(3) { animation-delay: 0.2s; }
+        .link-button:nth-child(4) { animation-delay: 0.3s; }
+
+        .link-button:hover {
+            transform: scale(1.05);
+        }
+
+        .link-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .link-button:hover::before {
+            left: 100%;
+        }
+
+        .link-youtube {
+            background: linear-gradient(to right, #ef4444, #dc2626);
+        }
+
+        .link-youtube:hover {
+            background: linear-gradient(to right, #dc2626, #b91c1c);
+        }
+
+        .link-kick {
+            background: linear-gradient(to right, #10b981, #059669);
+        }
+
+        .link-kick:hover {
+            background: linear-gradient(to right, #059669, #047857);
+        }
+
+        .link-instagram {
+            background: linear-gradient(to right, #ec4899, #9333ea);
+        }
+
+        .link-instagram:hover {
+            background: linear-gradient(to right, #db2777, #7e22ce);
+        }
+
+        .link-tiktok {
+            background: linear-gradient(to right, #1e293b, #0f172a);
+        }
+
+        .link-tiktok:hover {
+            background: linear-gradient(to right, #0f172a, #020617);
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .link-button:hover .link-icon {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(12deg);
+        }
+
+        .link-text {
+            font-size: 20px;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+        .link-button:hover .link-text {
+            transform: translateX(8px);
+        }
+
+        .link-arrow {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .link-button:hover .link-arrow {
+            transform: translateX(8px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #9ca3af;
+            font-size: 14px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .title-main { font-size: 36px; }
+            .title-sub { font-size: 32px; }
+            .avatar-container { width: 110px; height: 110px; }
+            .avatar-letter { font-size: 60px; }
+            .link-button { padding: 20px; }
+            .link-text { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-effect bg-effect-1"></div>
+    <div class="bg-effect bg-effect-2"></div>
+    <div class="bg-effect bg-effect-3"></div>
+
+    <!-- Floating Particles -->
+    <script>
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            particle.style.animationDuration = (3 + Math.random() * 4) + 's';
+            document.body.appendChild(particle);
+        }
+    </script>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <!-- Avatar -->
+            <div class="avatar-container">
+                <div class="avatar-glow"></div>
+                <div class="avatar">
+                    <div class="avatar-letter">R</div>
+                </div>
+            </div>
+
+            <!-- Titles -->
+            <h1 class="title-main">MR RUISDI</h1>
+            <h2 class="title-sub">OFFICIAL</h2>
+
+            <!-- Badges -->
+            <div class="badge-container">
+                <div class="main-badge">
+                    <svg class="sparkle" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 16.8l-6.3 4.6L8 14l-6-4.6h7.6z"/>
+                    </svg>
+                    <span>CONTENT CREATOR</span>
+                    <svg class="sparkle" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 16.8l-6.3 4.6L8 14l-6-4.6h7.6z"/>
+                    </svg>
+                </div>
+
+                <div class="badges-row">
+                    <a href="https://youtu.be/gnzU8zQRa2M?si=l_SBMgmvKi3y31P8" target="_blank" class="badge badge-gamer">
+                        🎮 Gamer
+                    </a>
+                    <a href="https://youtu.be/0rqPgkgapWk?si=IfTDzzO1FT0dvGRd" target="_blank" class="badge badge-streamer">
+                        📺 Streamer
+                    </a>
+                    <a href="https://youtu.be/UoyM7rtscXw?si=N2crJLHF7jusyTb8" target="_blank" class="badge badge-influencer">
+                        ⭐ Influencer
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="links-section">
+            <!-- YouTube -->
+            <a href="https://youtube.com/@ruisdiofficial1?si=YCqQJDp9av7N4j8k" target="_blank" class="link-button link-youtube">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <span class="link-text">YouTube</span>
+                </div>
+                <svg class="link-arrow" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </a>
+
+            <!-- Kick -->
+            <a href="https://kick.com/mr-ruisdi-official" target="_blank" class="link-button link-kick">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                            <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 16.8l-6.3 4.6L8 14l-6-4.6h7.6z"/>
+                        </svg>
+                    </div>
+                    <span class="link-text">Kick</span>
+                </div>
+                <svg class="link-arrow" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com/_mr_ruisdi_officiel_" target="_blank" class="link-button link-instagram">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </div>
+                    <span class="link-text">Instagram</span>
+                </div>
+                <svg class="link-arrow" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://tiktok.com/@mr.ruisdi.officia?is_from_webapp=1&sender_device=pc" target="_blank" class="link-button link-tiktok">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </div>
+                    <span class="link-text">TikTok</span>
+                </div>
+                <svg class="link-arrow" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            ⚡ Follow me on all platforms ⚡
+        </div>
+    </div>
+</body>
+</html>
